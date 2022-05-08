@@ -1,7 +1,7 @@
 # Distibuted-SSSP
 ## About the project
 
-This project demonstrates the implementation of serial, parallel and distributed version of Dijkstra's algorithm to solve **Single Source Shortest Path** problem for directed unweighted graph.
+I created this project to dive deep into Distributed Systems programming and go beyond what I learn in class. This project demonstrates the implementation of serial, parallel and distributed version of Dijkstra's algorithm to solve **Single Source Shortest Path** problem for directed unweighted graph.
 
 ## To generate input graphs
 
