@@ -1,4 +1,24 @@
-# CMPT431-Project
+# Distibuted-SSSP
+## About the project
+
+This project demonstrates the implementation of serial, parallel and distributed version of Dijkstra's algorithm to solve **Single Source Shortest Path** problem for directed unweighted graph.
+
+## To generate input graphs
+
+1. Create a file called `testGraph.txt` , with the list of edges (one edge on each line in "`<source> <destination>`" form) in the graph. For example,
+
+   ```cpp
+   1 2
+   2 3
+   ```
+
+2. Run `input_graphs/SNAPtoBinary testGraph.txt testGraphConverted`. This will create `testGraphConverted.csr` and `testGraphConverted.csc` files which are [CSR and CSC](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)) representations of the graph.
+
+3. To use the graphs in your solutions, use the command line argument `--inputFile "testGraphConverted"`.
+
+4. Note that you can also convert any large graphs form the Stanford repository (https://snap.stanford.edu/data/index.html) by downloading the graph file then using the same SNAPtoBinary script above. 
+
+
 ## Compile
 
 1. To compile all the code, use the following command.
@@ -33,13 +53,13 @@
    ./SSSP_serial --sourceVertex 1 --inputFile absolute_path_of_input_graph --y_or_n yes
    ```
 
-   --sourceVertex: the ID of the source vertex
+   `--sourceVertex`: the ID of the source vertex
 
-   --inputeFile: absolute path of the input graph
+   `--inputeFile`: absolute path of the input graph
 
-   --y_or_n: whether or not to print out the shortest path
+   `--y_or_n`: whether or not to print out the shortest path
 
-2. Run the executable file SSSP_serial on slurm:
+2. Run the executable file SSSP_serial on Slurm cluster:
    create a a bash script  in the following format:
 
    ```shell
@@ -53,7 +73,7 @@
    srun ./SSSP_serial --sourceVertex 1 --inputFile absolute_path_of_input_graph --y_or_n yes
    ```
 
-   run it on slurm by command:
+   run it on Slurm by command:
 
    ```shell
    sbatch filename.sh
@@ -67,15 +87,15 @@
    ./SSSP_parallel --nThreads 4 --sourceVertex 1 --inputFile [absolute_path_of_input_graph] --displayOutput [yes/no]
    ```
 
-   --nThreads: number of threads
+   `--nThreads`: number of threads
 
-   --sourceVertex: the ID of the source vertex
+   `--sourceVertex`: the ID of the source vertex
 
-   --inputFile: the absolute path of the input graph
+   `--inputFile`: the absolute path of the input graph
 
-   --displayOutput: whether to print out the result of the shortest path
+   `--displayOutput`: whether to print out the result of the shortest path
 
-2. Run the executable file SSSP_parallel on slurm:
+2. Run the executable file SSSP_parallel on Slurm cluster:
    create a a bash script  in the following format:
 
    ```bash
@@ -89,7 +109,7 @@
    srun ./SSSP_parallel --nThreads 4 --sourceVertex 1 --inputFile [absolute_path_of_input_graph] --displayOutput [yes/no]
    ```
 
-   run it on slurm by command:
+   run it on Slurm by command:
 
    ```bash
    sbatch filename.sh
@@ -107,13 +127,13 @@ mpirun -n num_processes ./SSSP_MPI --sourceVertex vertex_num --inputFile path_of
 
 ​	Arguments:
 
-​	--num_precesses: indicates the number of processes used   
+​	`--num_precesses`: indicates the number of processes used   
 
-​	--vertex_num: indicates the vertex number of the source vertex
+​	`--sourceVertex`: indicates the vertex number of the source vertex
 
-​	--path_of_graph: indicates the path of the input graph 
+​	`--inputFile`: indicates the path of the input graph 
 
-​	--str: can only be "yes" or "no". "yes" indicates printing out the detailed result, "no" indicates otherwise.
+​	`--y_or_n`: can only be "yes" or "no". "yes" indicates printing out the detailed result, "no" indicates otherwise.
 
 ​	sample command:
 
@@ -121,7 +141,7 @@ mpirun -n num_processes ./SSSP_MPI --sourceVertex vertex_num --inputFile path_of
 mpirun -n 4 ./SSSP_MPI --sourceVertex 0 --inputFile input_graphs/testG1 --y_or_n yes
 ```
 
-2. Run the executable file SSSP_MPI on slurm:
+2. Run the executable file SSSP_MPI on Slurm cluster:
    create a a bash script  in the following format:
 
 ```shell
@@ -137,9 +157,9 @@ srun ./SSSP_MPI --sourceVertex 0 --inputFile input_graphs/testG1 --y_or_n yes
 ```
 
 ​	options:
-​	--ntasks: indicates the number of processes used
+​	`--ntasks`: indicates the number of processes used
 
-​	run it on slurm by command:
+​	run it on Slurm by command:
 
 ```shell
 sbatch filename.sh
