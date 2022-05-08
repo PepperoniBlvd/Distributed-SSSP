@@ -1,8 +1,4 @@
 # CMPT431-Project
-[TOC]
-
-
-
 ## Compile
 
 1. To compile all the code, use the following command.
